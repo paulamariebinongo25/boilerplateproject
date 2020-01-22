@@ -3,6 +3,8 @@ import { RouterState } from 'connected-react-router';
 import { ContainerState as LanguageProviderState } from 'containers/LanguageProvider/types';
 import { ContainerState as AppState } from 'containers/App/types';
 import { ContainerState as HomeState } from 'containers/HomePage/types';
+import { ContainerState as LoginState } from 'containers/LoginPage/types';
+import { ContainerState as SignupState } from 'containers/SignupPage/types';
 
 export interface InjectedStore extends Store {
   injectedReducers: any;
@@ -30,6 +32,8 @@ export interface ApplicationRootState {
   readonly global: AppState;
   readonly language: LanguageProviderState;
   readonly home: HomeState;
+  readonly login: LoginState;
+  readonly signup: SignupState;
   // for testing purposes
   readonly test: any;
 }

@@ -1,11 +1,11 @@
 /*
- * Homepage Messages
+ * SignupPage Messages
  *
- * This contains all the text for the Homepage component.
+ * This contains all the text for the SignupPage component.
  */
 import { defineMessages } from 'react-intl';
 
-export const scope = 'boilerplate.containers.Homepage';
+export const scope = 'boilerplate.containers.SignupPage';
 
 export default defineMessages({
   startProjectHeader: {

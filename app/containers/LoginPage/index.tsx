@@ -31,7 +31,7 @@ import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-const key = 'home';
+const key = 'login';
 
 const stateSelector = createStructuredSelector({
   repos: makeSelectRepos(),
@@ -40,7 +40,7 @@ const stateSelector = createStructuredSelector({
   error: makeSelectError(),
 });
 
-export default function HomePage() {
+export default function LoginPage() {
   const { repos, username, loading, error } = useSelector(stateSelector);
 
   const dispatch = useDispatch();
@@ -75,45 +75,52 @@ export default function HomePage() {
   };
 
   return (
-    <article>
-      <Helmet>
-        <title>Home Page</title>
-        <meta
-          name="description"
-          content="A React.js Boilerplate application homepage"
-        />
-      </Helmet>
-      <div>
-        <CenteredSection>
-          <H2>
-            <FormattedMessage {...messages.startProjectHeader} />
-          </H2>
-          <p>
-            <FormattedMessage {...messages.startProjectMessage} />
+    <div className="columns is-mobile is-centered">
+      <div className="box">
+        <div className="field">
+          <label className="label">Email Address</label>
+          <p className="control has-icons-left has-icons-right">
+            <input
+              className="input is-medium"
+              type="email"
+              placeholder="Email Address"
+              // value="hello@"
+            />
+            <span className="icon has-text-info is-small is-left">
+              <i className="fas fa-envelope"></i>
+            </span>
+
+            <span className="icon has-text-success is-small is-right">
+              <i className="fas fa-check"></i>
+            </span>
           </p>
-        </CenteredSection>
-        <Section>
-          <H2>
-            <FormattedMessage {...messages.trymeHeader} />
-          </H2>
-          <Form onSubmit={onSubmitForm}>
-            <label htmlFor="username">
-              <FormattedMessage {...messages.trymeMessage} />
-              <AtPrefix>
-                <FormattedMessage {...messages.trymeAtPrefix} />
-              </AtPrefix>
-              <Input
-                id="username"
-                type="text"
-                placeholder="mxstbr"
-                value={username}
-                onChange={onChangeUsername}
-              />
-            </label>
-          </Form>
-          <ReposList {...reposListProps} />
-        </Section>
+        </div>
+        <div className="field">
+          <label className="label">Password</label>
+          <p className="control has-icons-left has-icons-right">
+            <input
+              className="input is-medium"
+              type="password"
+              placeholder="Password"
+              // value="hello@"
+            />
+            <span className="icon has-text-info is-small is-left">
+              <i className="fas fa-lock"></i>
+            </span>
+
+            <span className="icon has-text-success is-small is-right">
+              <i className="fas fa-check"></i>
+            </span>
+          </p>
+        </div>
+        <div className="field">
+          <p className="control">
+            <button className="button is-centered is-info is-light is is-outlined has-text-info is-fullwidth is-medium">
+              Login
+            </button>
+          </p>
+        </div>
       </div>
-    </article>
+    </div>
   );
 }

@@ -28,6 +28,13 @@
     "removeComments": true,
     "sourceMap": true
   },
-  "include": ["app/**/*", "internals/templates/**/*"],
+  "include": [
+    "app/**/*",
+    "internals/templates/**/*",
+    "action.ts",
+    "FeaturePage",
+    "app/containers/LoginPage/index.tsx",
+    "index.tsx"
+  ],
   "exclude": ["node_modules"]
 }

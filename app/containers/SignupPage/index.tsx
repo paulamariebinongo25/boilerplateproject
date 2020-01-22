@@ -1,5 +1,5 @@
 /*
- * HomePage
+ * SignupPage
  *
  * This is the first thing users see of our App, at the '/' route
  */
@@ -31,7 +31,7 @@ import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-const key = 'home';
+const key = 'signup';
 
 const stateSelector = createStructuredSelector({
   repos: makeSelectRepos(),
@@ -40,7 +40,7 @@ const stateSelector = createStructuredSelector({
   error: makeSelectError(),
 });
 
-export default function HomePage() {
+export default function LoginPage() {
   const { repos, username, loading, error } = useSelector(stateSelector);
 
   const dispatch = useDispatch();
@@ -77,7 +77,7 @@ export default function HomePage() {
   return (
     <article>
       <Helmet>
-        <title>Home Page</title>
+        <title>Signup Page</title>
         <meta
           name="description"
           content="A React.js Boilerplate application homepage"
