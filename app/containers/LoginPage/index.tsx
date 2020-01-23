@@ -77,6 +77,10 @@ export default function LoginPage() {
   return (
     <div className="columns is-mobile is-centered">
       <div className="box">
+        {/* <div className="card"> */}
+        {/* <header className="card-header"> */}
+        <h3 className="card-header-title is-centered has-text-info">Login Page</h3>
+        {/* </header> */}
         <div className="field">
           <label className="label">Email Address</label>
           <p className="control has-icons-left has-icons-right">
@@ -115,10 +119,26 @@ export default function LoginPage() {
         </div>
         <div className="field">
           <p className="control">
-            <button className="button is-centered is-info is-light is is-outlined has-text-info is-fullwidth is-medium">
-              Login
-            </button>
+            <div className="btn">
+              <button className="button is-centered is-info has-text-white is-fullwidth is-medium">
+                Login
+              </button>
+            </div>
           </p>
+        </div>
+        <div className="field">
+          <div className="control">
+            <h5 className="level">
+              <label className="checkbox">
+                <input type="checkbox" />
+                <span className="text">Rememeber Me</span>
+                <a className="link" href="#">
+                  Forgot Password?
+                </a>
+              </label>
+              {/* </di> */}
+            </h5>
+          </div>
         </div>
       </div>
     </div>
