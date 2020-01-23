@@ -31,6 +31,8 @@ import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
+import Footer from "../../../app/components/Footer/index"
+
 const key = 'home';
 
 const stateSelector = createStructuredSelector({
@@ -113,7 +115,9 @@ export default function HomePage() {
           </Form>
           <ReposList {...reposListProps} />
         </Section>
+       
       </div>
+      <Footer/>
     </article>
   );
 }

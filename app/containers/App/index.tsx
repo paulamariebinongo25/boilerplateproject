@@ -50,7 +50,7 @@ export default function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
       <GlobalStyle />
     </AppWrapper>
   );
