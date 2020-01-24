@@ -5,6 +5,7 @@
  */
 
 import React, { useEffect } from 'react';
+import HeaderLink from '../../components/Header/HeaderLink';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
@@ -40,10 +41,19 @@ const stateSelector = createStructuredSelector({
   error: makeSelectError(),
 });
 
-export default function LoginPage() {
+export default function LoginPage(props: any) {
   const { repos, username, loading, error } = useSelector(stateSelector);
+  const [isModalActive, setIsModalActive] = React.useState(false);
 
   const dispatch = useDispatch();
+
+  const handleOpenModal = () => {
+    if (isModalActive) {
+      setIsModalActive(false);
+    } else {
+      setIsModalActive(true);
+    }
+  };
 
   // Not gonna declare event types here. No need. any is fine
   const onChangeUsername = (evt: any) =>
@@ -79,7 +89,9 @@ export default function LoginPage() {
       <div className="box">
         {/* <div className="card"> */}
         {/* <header className="card-header"> */}
-        <h3 className="card-header-title is-centered has-text-info">Login Page</h3>
+        <h3 className="card-header-title is-centered has-text-info">
+          Login Page
+        </h3>
         {/* </header> */}
         <div className="field">
           <label className="label">Email Address</label>
@@ -136,11 +148,89 @@ export default function LoginPage() {
                   Forgot Password?
                 </a>
               </label>
-              {/* </di> */}
+            </h5>
+          </div>
+        </div>
+        <div className="field">
+          <div className="control">
+            <h5 className="container is-pulled-left">
+              <label className="level">
+                <span>Don't have an account?</span>
+                <HeaderLink
+                  className={`button is-outlined is-rounded is-info is-light btn-remove ${
+                    isModalActive ? 'is-active' : ''
+                  }`}
+                  onClick={handleOpenModal}
+                  data-target="modalClass"
+                >
+                  <div
+                    id="modalClass"
+                    className={`modal ${isModalActive ? 'is-active' : ''}`}
+                  >
+                    <div className="modal-background is-mobile is-centered">
+                      <div className="modal-card">
+                        <header className="modal-card-head">
+                          <h3 className="modal-card-title has-text-info">
+                            Signup Page
+                          </h3>
+                          <button
+                            className="delete"
+                            aria-label="close"
+                          ></button>
+                        </header>
+                        <section className="modal-card-body"></section>
+                        <footer className="modal-card-foot">
+                          <button className="button is-success">
+                            Save changes
+                          </button>
+                          <button className="button">Cancel</button>
+                        </footer>
+                      </div>
+                    </div>
+                  </div>
+                  Signup
+                </HeaderLink>
+              </label>
             </h5>
           </div>
         </div>
       </div>
     </div>
   );
+}
+{
+  /* <HeaderLink
+                  className={`button is-info has-text-white is-rounded is-info btn ${
+                    isModalActive ? 'is-active' : ''
+                  }`}
+                  onClick={handleOpenModal}
+                  data-target="modalClass"
+                >
+                  <div
+                    id="modalClass"
+                    className={`modal ${isModalActive ? 'is-active' : ''}`}
+                  >
+                    <div className="modal-background is-mobile is-centered">
+                      <div className="modal-card">
+                        <header className="modal-card-head">
+                          <h3 className="modal-card-title has-text-info">
+                            Signup Page
+                          </h3>
+                          <button
+                            className="delete"
+                            aria-label="close"
+                          ></button>
+                        </header>
+                        <section className="modal-card-body"></section>
+                        <footer className="modal-card-foot">
+                          <button className="button is-success">
+                            Save changes
+                          </button>
+                          <button className="button">Cancel</button>
+                        </footer>
+                      </div>
+                    </div>
+                  </div>
+                  Create an account
+                </HeaderLink> */
 }

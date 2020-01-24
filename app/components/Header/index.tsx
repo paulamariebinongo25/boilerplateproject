@@ -11,14 +11,23 @@ import messages from './messages';
 
 import '../../styles/appStyles/style.css';
 
-function Header() {
+function Header(props: any) {
   const [isBurgerActive, setIsBurgerActive] = React.useState(false);
+  const [isModalActive, setIsModalActive] = React.useState(false);
 
   const handleOnClickMenu = () => {
     if (isBurgerActive) {
       setIsBurgerActive(false);
     } else {
       setIsBurgerActive(true);
+    }
+  };
+
+  const handleOpenModal = () => {
+    if (isModalActive) {
+      setIsModalActive(false);
+    } else {
+      setIsModalActive(true);
     }
   };
 
@@ -80,12 +89,143 @@ function Header() {
         <div className="navbar-end">
           <div className="buttons">
             <HeaderLink
-              className="button is-info has-text-white is-rounded is-info"
-              to="/signup"
+              className={`button is-info has-text-white is-rounded is-info ${
+                isModalActive ? 'is-active' : ''
+              }`}
+              onClick={handleOpenModal}
+              data-target="modalClass"
             >
+              <div
+                id="modalClass"
+                className={`modal ${isModalActive ? 'is-active' : ''}`}
+              >
+                <div className="modal-background is-mobile is-centered">
+                  <div className="modal-card">
+                    <header className="modal-card-head">
+                      <h3 className="modal-card-title has-text-info">
+                        Signup Page
+                      </h3>
+                      <button className="delete" aria-label="close"></button>
+                    </header>
+                    <section className="modal-card-body">
+                    <div className="field">
+                        <label className="label has-text-left">
+                          First Name
+                        </label>
+                        <p className="control has-icons-left has-icons-right">
+                          <input
+                            className="input is-medium"
+                            type="text"
+                            // value="hello@"
+                          />
+                          <span className="icon has-text-info is-small is-left">
+                            <i className="fas fa-envelope"></i>
+                          </span>
+
+                          <span className="icon has-text-success is-small is-right">
+                            <i className="fas fa-check"></i>
+                          </span>
+                        </p>
+                      </div>
+                      <div className="field">
+                        <label className="label has-text-left">
+                          Last Name
+                        </label>
+                        <p className="control has-icons-left has-icons-right">
+                          <input
+                            className="input is-medium"
+                            type="text"
+                           
+                            // value="hello@"
+                          />
+                          <span className="icon has-text-info is-small is-left">
+                            <i className="fas fa-envelope"></i>
+                          </span>
+
+                          <span className="icon has-text-success is-small is-right">
+                            <i className="fas fa-check"></i>
+                          </span>
+                        </p>
+                      </div>
+                      <div className="field">
+                        <label className="label has-text-left">
+                          First Name
+                        </label>
+                        <p className="control has-icons-left has-icons-right">
+                          <input
+                            className="input is-medium"
+                            type="text"
+                            // value="hello@"
+                          />
+                          <span className="icon has-text-info is-small is-left">
+                            <i className="fas fa-envelope"></i>
+                          </span>
+
+                          <span className="icon has-text-success is-small is-right">
+                            <i className="fas fa-check"></i>
+                          </span>
+                        </p>
+                      </div>
+                      <div className="field">
+                        <label className="label has-text-left">
+                          Last Name
+                        </label>
+                        <p className="control has-icons-left has-icons-right">
+                          <input
+                            className="input is-medium"
+                            type="text"
+                            placeholder="Email Address"
+                            // value="hello@"
+                          />
+                          <span className="icon has-text-info is-small is-left">
+                            <i className="fas fa-envelope"></i>
+                          </span>
+
+                          <span className="icon has-text-success is-small is-right">
+                            <i className="fas fa-check"></i>
+                          </span>
+                        </p>
+                      </div>
+                      <div className="field">
+                        <label className="label has-text-left">Password</label>
+                        <p className="control has-icons-left has-icons-right">
+                          <input
+                            className="input is-medium"
+                            type="password"
+                            placeholder="Password"
+                            // value="hello@"
+                          />
+                          <span className="icon has-text-info is-small is-left">
+                            <i className="fas fa-lock"></i>
+                          </span>
+
+                          <span className="icon has-text-success is-small is-right">
+                            <i className="fas fa-check"></i>
+                          </span>
+                        </p>
+                      </div>
+                      <div className="field">
+                        <p className="control">
+                          <div className="btn">
+                            <button className="button is-centered is-info has-text-white is-fullwidth is-medium">
+                              Login
+                            </button>
+                          </div>
+                        </p>
+                      </div>
+                    </section>
+                    <footer className="modal-card-foot">
+                      <button className="button is-success">
+                        Save changes
+                      </button>
+                      <button className="button">Cancel</button>
+                    </footer>
+                  </div>
+                </div>
+              </div>
+
               <FormattedMessage {...messages.signup} />
             </HeaderLink>
-
             <HeaderLink
               className="button is-info is-light has-text-info is-rounded is-outlined"
               to="/login"
