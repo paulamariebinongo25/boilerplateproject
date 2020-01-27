@@ -170,11 +170,16 @@ export default function LoginPage(props: any) {
                     <div className="modal-background is-mobile is-centered">
                       <div className="modal-card">
                         <header className="modal-card-head">
-                          <h3 className="modal-card-title has-text-info">
-                            Signup Page
-                          </h3>
+                          {/* <div className="level">
+                            <span className="icon has-text-info is-large is-left">
+                              <i className="fas fa-arrow-left"></i>
+                            </span> */}
+                            <h3 className="modal-card-title has-text-info">
+                              Create Account
+                            </h3>
+                          {/* </div> */}
                           <button
-                            className="delete"
+                            className="delete has-text-primary"n
                             aria-label="close"
                           ></button>
                         </header>

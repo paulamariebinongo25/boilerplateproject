@@ -37,58 +37,70 @@ function Header(props: any) {
       role="navigation"
       ari-label="main navigation"
     >
-      <div className="navbar-brand">
-        <A className="navbar-item" href="https://bulma.io">
-          <img
-            src="https://bulma.io/images/bulma-logo.png"
-            width="112"
-            height="28"
-          />
-        </A>
+      <div className="container is-widescreen">
+        <div className="navbar-brand">
+          <A className="navbar-item" href="https://bulma.io">
+            <img
+              src="https://bulma.io/images/bulma-logo.png"
+              width="112"
+              height="28"
+            />
+          </A>
 
-        <A
-          role="button"
-          className={`navbar-burger burger ${
-            isBurgerActive ? 'is-active' : ''
-          }`}
-          onClick={handleOnClickMenu}
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navMenu"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </A>
-      </div>
-
-      <div
-        id="navMenu"
-        className={`navbar-menu ${isBurgerActive ? 'is-active' : ''}`}
-      >
-        <div className="navbar-start">
-          <HeaderLink className="navbar-item" to="/">
-            <FormattedMessage {...messages.home} />
-          </HeaderLink>
-          <div className="navbar-item has-dropdown is-hoverable">
-            <HeaderLink className="navbar-link" to="/about">
-              <FormattedMessage {...messages.about} />
-            </HeaderLink>
-            <div className="navbar-dropdown">
-              <HeaderLink className="navbar-item" to="/">
-                <FormattedMessage {...messages.home} />
-              </HeaderLink>
-
-              <HeaderLink className="navbar-item" to="/about">
-                <FormattedMessage {...messages.about} />
-              </HeaderLink>
-            </div>
-          </div>
+          <A
+            role="button"
+            className={`navbar-burger burger ${
+              isBurgerActive ? 'is-active' : ''
+            }`}
+            onClick={handleOnClickMenu}
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navMenu"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </A>
         </div>
 
-        <div className="navbar-end">
-          <div className="buttons">
-            <HeaderLink
+        <div
+          id="navMenu"
+          className={`navbar-menu ${isBurgerActive ? 'is-active' : ''}`}
+        >
+          <div className="navbar-start">
+            <HeaderLink className="navbar-item" to="/">
+              <FormattedMessage {...messages.home} />
+            </HeaderLink>
+            <div className="navbar-item has-dropdown is-hoverable">
+              <HeaderLink className="navbar-link" to="/about">
+                <FormattedMessage {...messages.about} />
+              </HeaderLink>
+              <div className="navbar-dropdown">
+                <HeaderLink className="navbar-item" to="/">
+                  <FormattedMessage {...messages.home} />
+                </HeaderLink>
+
+                <HeaderLink className="navbar-item" to="/about">
+                  <FormattedMessage {...messages.about} />
+                </HeaderLink>
+              </div>
+            </div>
+          </div>
+
+          <div className="btn-left level">
+            <div className="navbar-end">
+              <div className="buttons">
+                <div className="field has-addons">
+                  <div className="field-control control">
+                    <input className="input" type="text" placeholder="Search" />
+                  </div>
+                  <div className="field-control control">
+                    <a className="button is-info is-light has-text-info is-rounded is-outlined">
+                      Search
+                    </a>
+                  </div>
+                </div>
+                {/* <HeaderLink
               className={`button is-info has-text-white is-rounded is-info ${
                 isModalActive ? 'is-active' : ''
               }`}
@@ -225,13 +237,15 @@ function Header(props: any) {
               </div>
 
               <FormattedMessage {...messages.signup} />
-            </HeaderLink>
-            <HeaderLink
-              className="button is-info is-light has-text-info is-rounded is-outlined"
-              to="/login"
-            >
-              <FormattedMessage {...messages.login} />
-            </HeaderLink>
+            </HeaderLink> */}
+                <HeaderLink
+                  className="button is-info is-light has-text-info is-rounded is-outlined"
+                  to="/login"
+                >
+                  <FormattedMessage {...messages.login} />
+                </HeaderLink>
+              </div>
+            </div>
           </div>
         </div>
       </div>

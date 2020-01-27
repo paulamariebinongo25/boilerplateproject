@@ -31,7 +31,7 @@
 }
 
 .link {
-  margin-left: 80px;
+  margin-left: 90px;
 }
 
 .footerText {
@@ -60,6 +60,7 @@
   text-transform: uppercase;
   font-size: 25px;
   margin-bottom: 20px;
+  margin-top: 30px;
 }
 .btn-remove {
   margin-left: 90px;
@@ -73,4 +74,13 @@
   padding: 0;
   align-items: center;
   justify-content: center;
+}
+
+.navbar-end {
+  background-color: none;
+}
+
+.field-control {
+  padding-top: 10px;
+  margin-right: 5px;
 }
