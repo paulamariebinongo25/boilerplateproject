@@ -22,28 +22,28 @@
 }
  */
 
-.columns {
+.navbar-menu {
+  background-color: none;
+}
+.nav-field-control {
+  padding-top: 10px;
+  margin-right: 5px;
+}
+
+.login-columns {
   padding: 150px 0 30px 0;
 }
 
-.text {
+.signup-columns {
+  padding: 30px 0 50px 0;
+}
+
+.text-checkbox {
   margin-left: 8px;
 }
 
-.link {
+.text-link {
   margin-left: 90px;
-}
-
-.footerText {
-  margin-top: 10px;
-}
-
-.linkText {
-  margin-left: 10px;
-}
-.btn {
-  margin-top: 50px;
-  margin-bottom: 15px;
 }
 
 .card-header-title {
@@ -52,35 +52,36 @@
   margin-bottom: 20px;
 }
 
-.modal-background {
-  padding-top: 100px;
+.submit-btn {
+  padding: 25px 0 10px 0;
 }
 
-.modal-card-title {
-  text-transform: uppercase;
-  font-size: 25px;
-  margin-bottom: 20px;
-  margin-top: 30px;
+.signup-footer-btn {
+  margin-left: 50px;
+  background-color: red;
 }
-.btn-remove {
+
+.login-footer-btn {
   margin-left: 90px;
+  background-color: red;
 }
 
-.container {
+.form-container {
   display: flex;
   align-content: center;
   text-align: justify;
-  margin: 0;
-  padding: 0;
   align-items: center;
   justify-content: center;
 }
 
-.navbar-end {
-  background-color: none;
+.header-icon {
+  margin-bottom: 20px;
+  font-size: 25px;
 }
 
-.field-control {
-  padding-top: 10px;
-  margin-right: 5px;
+.header-title {
+  /* background-color: red; */
+  margin-right: 50px;
+  text-align: center;
+  justify-content: center;
 }

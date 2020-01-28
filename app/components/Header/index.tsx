@@ -91,10 +91,10 @@ function Header(props: any) {
             <div className="navbar-end">
               <div className="buttons">
                 <div className="field has-addons">
-                  <div className="field-control control">
+                  <div className="nav-field-control control">
                     <input className="input" type="text" placeholder="Search" />
                   </div>
-                  <div className="field-control control">
+                  <div className="nav-field-control control">
                     <a className="button is-info is-light has-text-info is-rounded is-outlined">
                       Search
                     </a>

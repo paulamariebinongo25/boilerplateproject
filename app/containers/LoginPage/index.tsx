@@ -43,17 +43,17 @@ const stateSelector = createStructuredSelector({
 
 export default function LoginPage(props: any) {
   const { repos, username, loading, error } = useSelector(stateSelector);
-  const [isModalActive, setIsModalActive] = React.useState(false);
+  // const [isModalActive, setIsModalActive] = React.useState(false);
 
   const dispatch = useDispatch();
 
-  const handleOpenModal = () => {
-    if (isModalActive) {
-      setIsModalActive(false);
-    } else {
-      setIsModalActive(true);
-    }
-  };
+  // const handleOpenModal = () => {
+  //   if (isModalActive) {
+  //     setIsModalActive(false);
+  //   } else {
+  //     setIsModalActive(true);
+  //   }
+  // };
 
   // Not gonna declare event types here. No need. any is fine
   const onChangeUsername = (evt: any) =>
@@ -85,7 +85,15 @@ export default function LoginPage(props: any) {
   };
 
   return (
-    <div className="columns is-mobile is-centered">
+    <div>
+      <Helmet>
+        <title>Login-ReactJS Boilerplate</title>
+        <meta
+        name="description"
+        content="Login page of React.js Boilerplate application"
+      />
+    </Helmet>
+    <div className="login-columns columns is-mobile is-centered">
       <div className="box">
         {/* <div className="card"> */}
         {/* <header className="card-header"> */}
@@ -131,8 +139,8 @@ export default function LoginPage(props: any) {
         </div>
         <div className="field">
           <p className="control">
-            <div className="btn">
-              <button className="button is-centered is-info has-text-white is-fullwidth is-medium">
+            <div className="submit-btn">
+              <button className="button is-centered is-rounded is-info has-text-white is-fullwidth is-medium">
                 Login
               </button>
             </div>
@@ -143,8 +151,8 @@ export default function LoginPage(props: any) {
             <h5 className="level">
               <label className="checkbox">
                 <input type="checkbox" />
-                <span className="text">Rememeber Me</span>
-                <a className="link" href="#">
+                <span className="text-checkbox">Rememeber Me</span>
+                <a className="text-link" href="#">
                   Forgot Password?
                 </a>
               </label>
@@ -156,44 +164,10 @@ export default function LoginPage(props: any) {
             <h5 className="container is-pulled-left">
               <label className="level">
                 <span>Don't have an account?</span>
-                <HeaderLink
-                  className={`button is-outlined is-rounded is-info is-light btn-remove ${
-                    isModalActive ? 'is-active' : ''
-                  }`}
-                  onClick={handleOpenModal}
-                  data-target="modalClass"
-                >
-                  <div
-                    id="modalClass"
-                    className={`modal ${isModalActive ? 'is-active' : ''}`}
-                  >
-                    <div className="modal-background is-mobile is-centered">
-                      <div className="modal-card">
-                        <header className="modal-card-head">
-                          {/* <div className="level">
-                            <span className="icon has-text-info is-large is-left">
-                              <i className="fas fa-arrow-left"></i>
-                            </span> */}
-                            <h3 className="modal-card-title has-text-info">
-                              Create Account
-                            </h3>
-                          {/* </div> */}
-                          <button
-                            className="delete has-text-primary"n
-                            aria-label="close"
-                          ></button>
-                        </header>
-                        <section className="modal-card-body"></section>
-                        <footer className="modal-card-foot">
-                          <button className="button is-success">
-                            Save changes
-                          </button>
-                          <button className="button">Cancel</button>
-                        </footer>
-                      </div>
-                    </div>
-                  </div>
-                  Signup
+                <HeaderLink to="/signup">
+                  <button className="login-footer-btn button is-outlined is-rounded is-info is-light">
+                    Sign Up
+                  </button>
                 </HeaderLink>
               </label>
             </h5>
@@ -201,41 +175,160 @@ export default function LoginPage(props: any) {
         </div>
       </div>
     </div>
+    </div>
   );
 }
-{
-  /* <HeaderLink
-                  className={`button is-info has-text-white is-rounded is-info btn ${
-                    isModalActive ? 'is-active' : ''
-                  }`}
-                  onClick={handleOpenModal}
-                  data-target="modalClass"
-                >
-                  <div
-                    id="modalClass"
-                    className={`modal ${isModalActive ? 'is-active' : ''}`}
-                  >
-                    <div className="modal-background is-mobile is-centered">
-                      <div className="modal-card">
-                        <header className="modal-card-head">
-                          <h3 className="modal-card-title has-text-info">
-                            Signup Page
-                          </h3>
-                          <button
-                            className="delete"
-                            aria-label="close"
-                          ></button>
-                        </header>
-                        <section className="modal-card-body"></section>
-                        <footer className="modal-card-foot">
-                          <button className="button is-success">
-                            Save changes
-                          </button>
-                          <button className="button">Cancel</button>
-                        </footer>
-                      </div>
-                    </div>
-                  </div>
-                  Create an account
-                </HeaderLink> */
-}
+//  {/* <HeaderLink
+//                   className={`button is-outlined is-rounded is-info is-light btn-remove ${
+//                     isModalActive ? 'is-active' : ''
+//                   }`}
+//                   onClick={handleOpenModal}
+//                   data-target="modalClass"
+//                 >
+//                   <div
+//                     id="modalClass"
+//                     className={`modal ${isModalActive ? 'is-active' : ''}`}
+//                   >
+//                     <div className="modal-background is-mobile is-centered">
+//                       <div className="modal-card">
+//                         <header className="modal-card-head">
+//                           {/* <span className="icon is-large has-text-info has-text-large is-left">
+//                             <i className="fas fa-arrow-left is is-large"></i>
+//                           </span> */}
+//                           <h3 className="modal-card-title has-text-info">
+//                             Create Account
+//                           </h3>
+//                           {/* </div> */}
+//                           <button
+//                             className="delete has-text-primary"
+//                             aria-label="close"
+//                           ></button>
+//                         </header>
+//                         <section className="modal-card-body">
+//                           <div className="field">
+//                             <label className="label has-text-left">
+//                               Username
+//                             </label>
+//                             <p className="control has-icons-left has-icons-right">
+//                               <input
+//                                 className="input is-medium"
+//                                 type="text"
+//                                 placeholder="Username"
+//                                 // value="hello@"
+//                               />
+//                               <span className="icon has-text-info is-small is-left">
+//                                 <i className="fas fa-user"></i>
+//                               </span>
+
+//                               <span className="icon has-text-success is-small is-right">
+//                                 <i className="fas fa-check"></i>
+//                               </span>
+//                             </p>
+//                           </div>
+//                           <div className="field">
+//                             <label className="label has-text-left">
+//                               Email Address
+//                             </label>
+//                             <p className="control has-icons-left has-icons-right">
+//                               <input
+//                                 className="input is-medium"
+//                                 type="email"
+//                                 placeholder="Email Address"
+//                                 // value="hello@"
+//                               />
+//                               <span className="icon has-text-info is-small is-left">
+//                                 <i className="fas fa-envelope"></i>
+//                               </span>
+
+//                               <span className="icon has-text-success is-small is-right">
+//                                 <i className="fas fa-check"></i>
+//                               </span>
+//                             </p>
+//                           </div>
+//                           <div className="field">
+//                             <label className="label has-text-left">
+//                               Phone Number
+//                             </label>
+//                             <p className="control has-icons-left has-icons-right">
+//                               <input
+//                                 className="input is-medium"
+//                                 type="text"
+//                                 placeholder="Phone Number"
+//                                 // value="hello@"
+//                               />
+//                               <span className="icon has-text-info is-small is-left">
+//                                 <i className="fas fa-mobile"></i>
+//                               </span>
+
+//                               <span className="icon has-text-success is-small is-right">
+//                                 <i className="fas fa-check"></i>
+//                               </span>
+//                             </p>
+//                           </div>
+//                           <div className="field">
+//                             <label className="label has-text-left">
+//                               Password
+//                             </label>
+//                             <p className="control has-icons-left has-icons-right">
+//                               <input
+//                                 className="input is-medium"
+//                                 type="password"
+//                                 placeholder="Password"
+//                                 // value="hello@"
+//                               />
+//                               <span className="icon has-text-info is-small is-left">
+//                                 <i className="fas fa-lock"></i>
+//                               </span>
+
+//                               <span className="icon has-text-success is-small is-right">
+//                                 <i className="fas fa-check"></i>
+//                               </span>
+//                             </p>
+//                           </div>
+//                           <div className="field">
+//                             <label className="label has-text-left">
+//                               Confirm Password
+//                             </label>
+//                             <p className="control has-icons-left has-icons-right">
+//                               <input
+//                                 className="input is-medium"
+//                                 type="password"
+//                                 placeholder="Confirm Password"
+//                                 // value="hello@"
+//                               />
+//                               <span className="icon has-text-info is-small is-left">
+//                                 <i className="fas fa-lock"></i>
+//                               </span>
+
+//                               <span className="icon has-text-success is-small is-right">
+//                                 <i className="fas fa-check"></i>
+//                               </span>
+//                             </p>
+//                           </div>
+//                           <div className="field">
+//                             <p className="control">
+//                               <div className="btn">
+//                                 <button className="button is-centered is-info has-text-white is-fullwidth is-medium">
+//                                   Create Account
+//                                 </button>
+//                               </div>
+//                             </p>
+//                           </div>
+//                         </section>
+//                         <footer className="modal-card-foot">
+//                           <div className="field">
+//                             <div className="lvl-footer control">
+//                               <h5 className="container">
+//                                 <label className="level">
+//                                   <span>Don't have an account?</span>
+//                                   <a href="/login">Login</a>
+//                                 </label>
+//                               </h5>
+//                             </div>
+//                           </div>
+//                         </footer>
+//                       </div>
+//                     </div>
+//                   </div>
+//                   Signup
+//                 </HeaderLink>
