@@ -1,9 +1,3 @@
-/*
- * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
- */
-
 import React, { useEffect } from 'react';
 import HeaderLink from '../../components/Header/HeaderLink';
 import { Helmet } from 'react-helmet';
@@ -32,7 +26,8 @@ import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-const key = 'login';
+// const key = 'login';
+const key = 'home';
 
 const stateSelector = createStructuredSelector({
   repos: makeSelectRepos(),
@@ -87,94 +82,96 @@ export default function LoginPage(props: any) {
   return (
     <div>
       <Helmet>
-        <title>Login-ReactJS Boilerplate</title>
+        <title>Login Page</title>
         <meta
-        name="description"
-        content="Login page of React.js Boilerplate application"
-      />
-    </Helmet>
-    <div className="login-columns columns is-mobile is-centered">
-      <div className="box">
-        {/* <div className="card"> */}
-        {/* <header className="card-header"> */}
-        <h3 className="card-header-title is-centered has-text-info">
-          Login Page
-        </h3>
-        {/* </header> */}
-        <div className="field">
-          <label className="label">Email Address</label>
-          <p className="control has-icons-left has-icons-right">
-            <input
-              className="input is-medium"
-              type="email"
-              placeholder="Email Address"
-              // value="hello@"
-            />
-            <span className="icon has-text-info is-small is-left">
-              <i className="fas fa-envelope"></i>
-            </span>
+          name="description"
+          content="Login page of React.js Boilerplate application"
+        />
+      </Helmet>
+      <div className="login-columns columns is-mobile is-centered">
+        <div className="box">
+          {/* <div className="card"> */}
+          {/* <header className="card-header"> */}
+          <h3 className="card-header-title is-centered has-text-dark">
+            Login Page
+          </h3>
+          {/* </header> */}
+          <div className="field">
+            <label className="label">Email Address</label>
+            <p className="control has-icons-left has-icons-right">
+              <input
+                className="input is-medium"
+                type="email"
+                placeholder="Email Address"
+                // value="hello@"
+              />
+              <span className="icon has-text-dark is-small is-left">
+                <i className="fas fa-envelope"></i>
+              </span>
 
-            <span className="icon has-text-success is-small is-right">
-              <i className="fas fa-check"></i>
-            </span>
-          </p>
-        </div>
-        <div className="field">
-          <label className="label">Password</label>
-          <p className="control has-icons-left has-icons-right">
-            <input
-              className="input is-medium"
-              type="password"
-              placeholder="Password"
-              // value="hello@"
-            />
-            <span className="icon has-text-info is-small is-left">
-              <i className="fas fa-lock"></i>
-            </span>
-
-            <span className="icon has-text-success is-small is-right">
-              <i className="fas fa-check"></i>
-            </span>
-          </p>
-        </div>
-        <div className="field">
-          <p className="control">
-            <div className="submit-btn">
-              <button className="button is-centered is-rounded is-info has-text-white is-fullwidth is-medium">
-                Login
-              </button>
-            </div>
-          </p>
-        </div>
-        <div className="field">
-          <div className="control">
-            <h5 className="level">
-              <label className="checkbox">
-                <input type="checkbox" />
-                <span className="text-checkbox">Rememeber Me</span>
-                <a className="text-link" href="#">
-                  Forgot Password?
-                </a>
-              </label>
-            </h5>
+              <span className="icon has-text-success is-small is-right">
+                <i className="fas fa-check"></i>
+              </span>
+            </p>
           </div>
-        </div>
-        <div className="field">
-          <div className="control">
-            <h5 className="container is-pulled-left">
-              <label className="level">
-                <span>Don't have an account?</span>
-                <HeaderLink to="/signup">
-                  <button className="login-footer-btn button is-outlined is-rounded is-info is-light">
-                    Sign Up
+          <div className="field">
+            <label className="label">Password</label>
+            <p className="control has-icons-left has-icons-right">
+              <input
+                className="input is-medium"
+                type="password"
+                placeholder="Password"
+                // value="hello@"
+              />
+              <span className="icon has-text-dark is-small is-left">
+                <i className="fas fa-lock"></i>
+              </span>
+
+              <span className="icon has-text-success is-small is-right">
+                <i className="fas fa-check"></i>
+              </span>
+            </p>
+          </div>
+          <div className="field">
+            <p className="control">
+              <div className="submit-btn">
+                <a href="/login">
+                  <button className="button is-centered is-rounded is-dark has-text-white is-fullwidth is-medium">
+                    Login
                   </button>
-                </HeaderLink>
-              </label>
-            </h5>
+                </a>
+              </div>
+            </p>
+          </div>
+          <div className="field">
+            <div className="control">
+              <h5 className="level">
+                <label className="checkbox">
+                  <input type="checkbox" />
+                  <span className="text-checkbox">Rememeber Me</span>
+                  <a className="text-link has-text-black" href="#">
+                    Forgot Password?
+                  </a>
+                </label>
+              </h5>
+            </div>
+          </div>
+          <div className="field">
+            <div className="control">
+              <h5 className="container is-pulled-left">
+                <label className="level">
+                  <span>Don't have an account?</span>
+                  <HeaderLink to="/signup">
+                    <button className="login-footer-btn button is-outlined is-rounded is-dark is-light has-text-black">
+                      Sign Up
+                    </button>
+                  </HeaderLink>
+                </label>
+              </h5>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }

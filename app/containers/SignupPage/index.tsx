@@ -43,8 +43,44 @@ const stateSelector = createStructuredSelector({
 
 export default function SignupPage() {
   const { repos, username, loading, error } = useSelector(stateSelector);
-  const [isModalActive, setIsModalActive] = React.useState(false);
+  // const [isModalActive, setIsModalActive] = React.useState(false);
+
+  const [userName, setUserName] = React.useState(
+    localStorage.getItem('Name' || 'userName'),
+  );
+
+  const [userEmail, setUserEmail] = React.useState(
+    localStorage.getItem('Email' || 'userEmail'),
+  );
+
+  const [userPhone, setUserPhone] = React.useState(
+    localStorage.getItem('Phone' || 'userPhone'),
+  );
+
+  const [userPassword, setUserPassword] = React.useState(
+    localStorage.getItem('Password' || 'userPassword'),
+  );
+
+  const [userConfirmPassword, setUserConfirmPassword] = React.useState(
+    localStorage.getItem('Confirm Password' || 'userConfirmPassword'),
+  );
+
+  useEffect(() => {
+    localStorage.setItem('Name', userName);
+    localStorage.setItem('Email', userEmail);
+    localStorage.setItem('Phone', userPhone);
+    localStorage.setItem('Password', userPassword);
+    localStorage.setItem('Confirm Password', userConfirmPassword);
+  }, [userName, userEmail, userPhone, userPassword, userConfirmPassword]);
+
   const dispatch = useDispatch();
+
+  const handleOnChangeName = e => setUserName(e.target.value);
+  const handleOnChangeEmail = e => setUserEmail(e.target.value);
+  const handleOnChangePhone = e => setUserPhone(e.target.value);
+  const handleOnChangePassword = e => setUserPassword(e.target.value);
+  const handleOnChangeConfirmPassword = e =>
+    setUserConfirmPassword(e.target.value);
 
   // Not gonna declare event types here. No need. any is fine
   const onChangeUsername = (evt: any) =>
@@ -69,6 +105,30 @@ export default function SignupPage() {
     }
   }, []);
 
+  // function useLocalStorage(key, initialValue){
+  //   const [storedValue, setStoredValue] = React.useState(()=>{
+  //     try {
+  //       const item = window.localStorage.getItem(key);
+  //       return item ? JSON.parse(item) : initialValue;
+  //     }
+  //    catch(error){
+  //     console.log(error);
+  //     return initialValue;
+  //    }
+  //   })
+
+  //   const setValue = value => {
+  //     try {
+  //       const valueToStore = value instanceof Function ? value(storedValue) : value;
+  //       setStoredValue(valueToStore);
+  //       window.localStorage.setItem(key, JSON.stringify(valueToStore));
+  //     } catch (error){
+  //       console.log(error)
+  //     }
+  //   }
+  //   return [storedValue, setValue]
+  // }
+
   const reposListProps = {
     loading: loading,
     error: error,
@@ -84,15 +144,18 @@ export default function SignupPage() {
           content="Signup page of React.js Boilerplate application"
         />
       </Helmet>
-      <div className="signup-columns columns is-mobile is-centered">
+      {/* <nav className="nav-header navbar" role="navigation" aria-label="main navigation">
+         jsjdjs
+        </nav> */}
+      <div className="columns is-mobile is-centered">
         <div className="box">
           <div className="form-container container">
-            <HeaderLink to="/">
-              <span className="header-icon icon is-large has-text-info has-text-large is-left">
+            <HeaderLink to="/login">
+              <span className="header-icon icon is-large has-text-dark has-text-large is-left">
                 <i className="fas fa-arrow-left is is-large"></i>
               </span>
             </HeaderLink>
-            <h3 className="header-title card-header-title has-text-centered is-centered has-text-info">
+            <h3 className="header-title card-header-title has-text-centered is-centered has-text-dark">
               Signup Page
             </h3>
           </div>
@@ -104,9 +167,11 @@ export default function SignupPage() {
                 className="input is-medium"
                 type="text"
                 placeholder="Username"
-                // value="hello@"
+                value={userName}
+                name={'userName'}
+                onChange={handleOnChangeName}
               />
-              <span className="icon has-text-info is-medium is-left">
+              <span className="icon has-text-dark is-medium is-left">
                 <i className="fas fa-user"></i>
               </span>
 
@@ -120,11 +185,13 @@ export default function SignupPage() {
             <p className="control has-icons-left has-icons-right">
               <input
                 className="input is-medium"
-                type="email"
+                type="text"
                 placeholder="Email Address"
-                // value="hello@"
+                value={userEmail}
+                name={'userEmail'}
+                onChange={handleOnChangeEmail}
               />
-              <span className="icon has-text-info is-medium is-left">
+              <span className="icon has-text-dark is-medium is-left">
                 <i className="fas fa-envelope"></i>
               </span>
 
@@ -140,9 +207,11 @@ export default function SignupPage() {
                 className="input is-medium"
                 type="number"
                 placeholder="Phone Number"
-                // value="hello@"
+                value={userPhone}
+                name={'userPhone'}
+                onChange={handleOnChangePhone}
               />
-              <span className="icon has-text-info is-medium is-left">
+              <span className="icon has-text-dark is-medium is-left">
                 <i className="fas fa-mobile"></i>
               </span>
 
@@ -158,9 +227,11 @@ export default function SignupPage() {
                 className="input is-medium"
                 type="password"
                 placeholder="Password"
-                // value="hello@"
+                value={userPassword}
+                name={'userPassword'}
+                onChange={handleOnChangePassword}
               />
-              <span className="icon has-text-info is-medium is-left">
+              <span className="icon has-text-dark is-medium is-left">
                 <i className="fas fa-lock"></i>
               </span>
 
@@ -176,9 +247,11 @@ export default function SignupPage() {
                 className="input is-medium"
                 type="password"
                 placeholder="Confirm Password"
-                // value="hello@"
+                value={userConfirmPassword}
+                name={'userConfirmPassword'}
+                onChange={handleOnChangeConfirmPassword}
               />
-              <span className="icon has-text-info is-medium is-left">
+              <span className="icon has-text-dark is-medium is-left">
                 <i className="fas fa-lock"></i>
               </span>
 
@@ -191,7 +264,10 @@ export default function SignupPage() {
           <div className="field">
             <p className="control">
               <div className="submit-btn">
-                <button className="button is-centered is-rounded is-info has-text-white is-fullwidth is-medium">
+                <button
+                  className="button is-centered is-rounded is-dark has-text-white is-fullwidth is-medium"
+                  type="submit"
+                >
                   Create Account
                 </button>
               </div>
@@ -202,8 +278,8 @@ export default function SignupPage() {
               <h5 className="container is-pulled-left">
                 <label className="level">
                   <span>Already have an account?</span>
-                  <HeaderLink to="/login">
-                    <button className="signup-footer-btn button is-outlined is-rounded is-info is-light">
+                  <HeaderLink to="/">
+                    <button className="signup-footer-btn button is-rounded is-outlined is-dark is-light has-text-black">
                       Login
                     </button>
                   </HeaderLink>

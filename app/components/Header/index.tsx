@@ -8,6 +8,7 @@ import HeaderLink from './HeaderLink';
 import Banner from './banner.jpg';
 import BannerHero from './bannerHero.jpg';
 import messages from './messages';
+import Logo from '../../images/soundcloud.png';
 
 import '../../styles/appStyles/style.css';
 
@@ -33,18 +34,14 @@ function Header(props: any) {
 
   return (
     <nav
-      className="navbar is-active is-info"
+      className="navbar is-active is-dark"
       role="navigation"
       ari-label="main navigation"
     >
       <div className="container is-widescreen">
         <div className="navbar-brand">
           <A className="navbar-item" href="https://bulma.io">
-            <img
-              src="https://bulma.io/images/bulma-logo.png"
-              width="112"
-              height="28"
-            />
+            <img src={Logo} width="40" height="100" />
           </A>
 
           <A
@@ -68,23 +65,15 @@ function Header(props: any) {
           className={`navbar-menu ${isBurgerActive ? 'is-active' : ''}`}
         >
           <div className="navbar-start">
-            <HeaderLink className="navbar-item" to="/">
+            <HeaderLink className="navbar-item" to="/login">
               <FormattedMessage {...messages.home} />
             </HeaderLink>
-            <div className="navbar-item has-dropdown is-hoverable">
-              <HeaderLink className="navbar-link" to="/about">
-                <FormattedMessage {...messages.about} />
-              </HeaderLink>
-              <div className="navbar-dropdown">
-                <HeaderLink className="navbar-item" to="/">
-                  <FormattedMessage {...messages.home} />
-                </HeaderLink>
-
-                <HeaderLink className="navbar-item" to="/about">
-                  <FormattedMessage {...messages.about} />
-                </HeaderLink>
-              </div>
-            </div>
+            <HeaderLink className="navbar-item" to="/stream">
+              <FormattedMessage {...messages.stream} />
+            </HeaderLink>
+            <HeaderLink className="navbar-item" to="/library">
+              <FormattedMessage {...messages.library} />
+            </HeaderLink>
           </div>
 
           <div className="btn-left level">
@@ -95,7 +84,7 @@ function Header(props: any) {
                     <input className="input" type="text" placeholder="Search" />
                   </div>
                   <div className="nav-field-control control">
-                    <a className="button is-info is-light has-text-info is-rounded is-outlined">
+                    <a className="button is-dark has-text-white is-rounded">
                       Search
                     </a>
                   </div>
@@ -239,8 +228,8 @@ function Header(props: any) {
               <FormattedMessage {...messages.signup} />
             </HeaderLink> */}
                 <HeaderLink
-                  className="button is-info is-light has-text-info is-rounded is-outlined"
-                  to="/login"
+                  className="button is-dark has-text-white is-rounded"
+                  to="/"
                 >
                   <FormattedMessage {...messages.login} />
                 </HeaderLink>

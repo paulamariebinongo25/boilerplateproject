@@ -1,5 +1,5 @@
 /**
- * Asynchronously loads the component for FeaturePage
+ * Asynchronously loads the component for LibraryPage
  */
 import * as React from 'react';
 import loadable from 'utils/loadable';

@@ -12,7 +12,8 @@ import styled from 'styles/styled-components';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
-import AboutPage from 'containers/AboutPage/Loadable';
+import LibraryPage from 'containers/LibraryPage/Loadable';
+import StreamPage from 'containers/StreamPage/Loadable';
 import SignupPage from 'containers/SignupPage/Loadable';
 import LoginPage from 'containers/LoginPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -37,18 +38,19 @@ export default function App() {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
+        // titleTemplate="%s - React.js Boilerplate"
+        titleTemplate="%s"
         defaultTitle="ReactJS Boilerplate"
       >
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
-      <Header />
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/about" component={AboutPage} />
+        <Route exact path="/" component={LoginPage} />
         <Route path="/signup" component={SignupPage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="" component={NotFoundPage} />
+        <Route path="/login" component={HomePage} />
+        <Route path="/stream" component={StreamPage} />
+        <Route path="/library" component={LibraryPage} />
+        <Route path="*" component={NotFoundPage} />
       </Switch>
       {/* <Footer /> */}
       <GlobalStyle />

@@ -6,13 +6,16 @@ import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 import { ApplicationRootState } from 'types';
 
-const selectHome = (state: ApplicationRootState) => {
-  return state.home || initialState;
+const selectLogin = (state: ApplicationRootState) => {
+  return state.login || initialState;
 };
 
 const makeSelectUsername = () =>
-  createSelector(selectHome, substate => {
-    return substate.username;
-  });
+  createSelector(
+    selectLogin,
+    substate => {
+      return substate.username;
+    },
+  );
 
-export { selectHome, makeSelectUsername };
+export { selectLogin, makeSelectUsername };

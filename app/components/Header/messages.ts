@@ -12,13 +12,17 @@ export default defineMessages({
     id: `${scope}.home`,
     defaultMessage: 'Home',
   },
-  about: {
-    id: `${scope}.about`,
-    defaultMessage: 'About',
+  stream: {
+    id: `${scope}.stream`,
+    defaultMessage: 'Stream',
   },
   login: {
     id: `${scope}.login`,
     defaultMessage: 'Login',
+  },
+  library: {
+    id: `${scope}.library`,
+    defaultMessage: 'Library',
   },
   signup: {
     id: `${scope}.signup`,

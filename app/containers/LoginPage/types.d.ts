@@ -4,7 +4,7 @@ import { ApplicationRootState } from 'types';
 
 /* --- STATE --- */
 
-interface LoginState {
+interface HomeState {
   readonly username: string;
 }
 
@@ -14,7 +14,7 @@ type AppActions = ActionType<typeof actions>;
 /* --- EXPORTS --- */
 
 type RootState = ApplicationRootState;
-type ContainerState = LoginState;
+type ContainerState = HomeState;
 type ContainerActions = AppActions;
 
 export { RootState, ContainerState, ContainerActions };

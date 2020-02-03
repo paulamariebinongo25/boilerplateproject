@@ -1,14 +1,14 @@
-import { selectHome, makeSelectUsername } from '../selectors';
+import { selectLogin, makeSelectUsername } from '../selectors';
 
-describe('selectHome', () => {
+describe('selectLogin', () => {
   it('should select the home state', () => {
-    const homeState = {
+    const loginState = {
       userData: {},
     };
     const mockedState: any = {
-      home: homeState,
+      login: loginState,
     };
-    expect(selectHome(mockedState)).toEqual(homeState);
+    expect(selectLogin(mockedState)).toEqual(loginState);
   });
 });
 

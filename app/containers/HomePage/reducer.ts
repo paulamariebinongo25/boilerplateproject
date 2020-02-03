@@ -6,9 +6,8 @@ export const initialState: ContainerState = {
   username: '',
 };
 
-
 // Take this container's state (as a slice of root state), this container's actions and return new state
-function homeReducer(
+function loginReducer(
   state: ContainerState = initialState,
   action: ContainerActions,
 ): ContainerState {
@@ -23,4 +22,4 @@ function homeReducer(
   }
 }
 
-export default homeReducer;
+export default loginReducer;

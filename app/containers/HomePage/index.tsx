@@ -17,6 +17,7 @@ import {
   makeSelectLoading,
   makeSelectRepos,
 } from 'containers/App/selectors';
+import Header from '../../components/Header/index';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
 import AtPrefix from './AtPrefix';
@@ -31,9 +32,9 @@ import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-import Footer from "../../../app/components/Footer/index"
+import Footer from '../../../app/components/Footer/index';
 
-const key = 'home';
+const key = 'login';
 
 const stateSelector = createStructuredSelector({
   repos: makeSelectRepos(),
@@ -45,57 +46,47 @@ const stateSelector = createStructuredSelector({
 export default function HomePage() {
   const { repos, username, loading, error } = useSelector(stateSelector);
 
+  // const [values, setValues] = React.useState('');
+  // const [jsonData, setJonData] = React.useState([]);
+
+  // async function fetchData() {
+  //   const res = await fetch(
+  //     'https://api.soundcloud.com/users/3207?client_id=YOUR_CLIENT_ID',
+  //   );
+  // const res1 = await res.json();
+
+  // setJsonData(res1);
+  // setData(res1);
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
   const dispatch = useDispatch();
 
-  // Not gonna declare event types here. No need. any is fine
-  const onChangeUsername = (evt: any) =>
-    dispatch(changeUsername(evt.target.value));
-  const onSubmitForm = (evt?: any) => {
-    if (evt !== undefined && evt.preventDefault) {
-      evt.preventDefault();
-    }
-    if (!username) {
-      return;
-    }
-    dispatch(loadRepos());
-  };
-
-  useInjectReducer({ key: key, reducer: reducer });
-  useInjectSaga({ key: key, saga: saga });
-
-  useEffect(() => {
-    // When initial state username is not null, submit the form to load repos
-    if (username && username.trim().length > 0) {
-      onSubmitForm();
-    }
-  }, []);
-
-  const reposListProps = {
-    loading: loading,
-    error: error,
-    repos: repos,
-  };
+  // // Not gonna declare event types here. No need. any is fine
 
   return (
     <article>
       <Helmet>
-        <title>Home Page</title>
+        <title>Home Page - React JS Boilerplate</title>
         <meta
           name="description"
-          content="A React.js Boilerplate application homepage"
+          content="A React.js Boilerplate application home page"
         />
       </Helmet>
       <div>
+        <Header />
         <CenteredSection>
-          <H2>
+          {/* <H2>
             <FormattedMessage {...messages.startProjectHeader} />
           </H2>
           <p>
             <FormattedMessage {...messages.startProjectMessage} />
-          </p>
+          </p> */}
         </CenteredSection>
         <Section>
-          <H2>
+          {/* <H2>
             <FormattedMessage {...messages.trymeHeader} />
           </H2>
           <Form onSubmit={onSubmitForm}>
@@ -112,12 +103,11 @@ export default function HomePage() {
                 onChange={onChangeUsername}
               />
             </label>
-          </Form>
-          <ReposList {...reposListProps} />
+          </Form> */}
+          {/* <ReposList {...reposListProps} /> */}
         </Section>
-       
       </div>
-      <Footer/>
+      <Footer />
     </article>
   );
 }
